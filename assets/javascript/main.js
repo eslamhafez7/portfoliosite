@@ -118,29 +118,60 @@ const scrollUp = () => {
     const scrollUp = document.getElementById('scroll-up')
     // When the scroll is higher than 350 viewport height, add the show scroll 
     this.scrollY >= 350 ? scrollUp.classList.add('show-scroll')
-                        : scrollUp.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollUp)
+                        : scrollUp.classList.remove('show-scroll');
+};
+window.addEventListener('scroll', scrollUp);
 
 
-// Dark Theme 
+
+// Change Theme 
 const themeButton = document.getElementById("moon_icon");
-const body = document.querySelector("body");
 const sunIcon = document.getElementById("sun_icon");
+const body = document.querySelector("body");
 
-themeButton.addEventListener("click", function() {
-    body.classList.toggle("dark-theme");
-    body.classList.remove("light-theme");
-    sunIcon.style.display = "block";
-    themeButton.style.display = "none";
-});
-
-sunIcon.addEventListener("click", function() {
-    body.classList.toggle("light-theme");
-    body.classList.remove("dark-theme");
+// Function to set the user's theme preference
+function setThemePreference(theme) {
+if (theme === "dark") {
+    body.classList.add("dark-theme");
     sunIcon.style.display = "none";
     themeButton.style.display = "block";
-});
+} else {
+    body.classList.add("light-theme");
+    sunIcon.style.display = "block";
+    themeButton.style.display = "none";
+}
+}
+
+// Function to handle the theme switch
+function switchTheme() {
+if (body.classList.contains("dark-theme")) {
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
+    sunIcon.style.display = "block";
+    themeButton.style.display = "none";
+    localStorage.setItem("theme", "light");
+} else {
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
+    sunIcon.style.display = "none";
+    themeButton.style.display = "block";
+    localStorage.setItem("theme", "dark");
+    }
+}
+
+// Add event listener to the theme button
+themeButton.addEventListener("click", switchTheme);
+sunIcon.addEventListener("click", switchTheme);
+
+// Check if user's theme preference is stored and apply the theme
+const storedTheme = localStorage.getItem("theme");
+if (storedTheme) {
+setThemePreference(storedTheme);
+} else {
+  // If no theme preference is stored, set default theme
+setThemePreference("light");
+}
+
 
 // Change background header 
 const scrollHeader = () => {
