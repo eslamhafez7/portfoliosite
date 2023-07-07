@@ -17,13 +17,13 @@ if (navClose) {
 }
 
 // Remove Menu Mobile
-const navLink = document.querySelectorAll('.nav-link')
+const navLink = document.querySelectorAll('.nav-link');
 const linkAction = () => {
     const navMenu = document.getElementById('nav_menu')
     // When we click on each nav-link we remove the show menu 
     navMenu.classList.remove('show-menu')
 }
-navLink.forEach(n => n.addEventListener('click', linkAction))
+navLink.forEach(n => n.addEventListener('click', linkAction));
 
 // Swiper Projects
 let swiperProjects = new Swiper(".projects-container", {
