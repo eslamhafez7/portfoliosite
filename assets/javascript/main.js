@@ -97,7 +97,7 @@ contactForm.addEventListener('submit', sendEmail)
 const sections = document.querySelectorAll('section[id]')
 
 const scrollActive = () => {
-    const scrollY = window.pageYOffset
+    const scrollY = window.pageYOffset;
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight,
         sectionTop = current.offsetTop - 58,
@@ -131,15 +131,15 @@ const body = document.querySelector("body");
 
 // Function to set the user's theme preference
 function setThemePreference(theme) {
-if (theme === "dark") {
-    body.classList.add("dark-theme");
-    sunIcon.style.display = "none";
-    themeButton.style.display = "block";
-} else {
-    body.classList.add("light-theme");
-    sunIcon.style.display = "block";
-    themeButton.style.display = "none";
-}
+    if (theme === "dark") {
+        body.classList.add("dark-theme");
+        sunIcon.style.display = "none";
+        themeButton.style.display = "block";
+    } else {
+        body.classList.add("light-theme");
+        sunIcon.style.display = "block";
+        themeButton.style.display = "none";
+    }
 }
 
 // Function to handle the theme switch
